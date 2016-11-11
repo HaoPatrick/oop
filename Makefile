@@ -1,7 +1,7 @@
 # Just one line to show the comments
 
 CC = g++
-CFLAGS= -c -Wall
+CFLAGS= -c -Wall -std=c++11
 
 all: student_info
 
