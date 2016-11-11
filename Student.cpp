@@ -4,7 +4,6 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
-#include <string>
 #include "sstream"
 #include "Student.h"
 
@@ -43,21 +42,14 @@ vector<std::string> StudentScore::split(const std::string s_s, char delim) {
 void StudentScore::print_result(void) {
     std::string out_line(name);
     out_line = out_line + " ";
-    for (const auto &kv:course_and_score_map) {
-        out_line += " " + kv.first + ":" + std::to_string(kv.second) + " ";
-    }
-    out_line += std::to_string(score_average);
+    out_line = std::accumulate(course_and_score_map.begin(), course_and_score_map.end(), out_line,
+                               [](std::string pre_result, const std::pair<std::string, int> &kv) {
+                                   return pre_result + " " + kv.first + ":" + std::to_string(kv.second);
+                               });
+    out_line += " " + std::to_string(score_average);
     std::cout << out_line << std::endl;
 }
 
-
-void StudentScore::set_score_average(void) {
-    int score_all = 0;
-    for (const auto &kv: course_and_score_map) {
-        score_all += kv.second;
-    }
-    score_average = 1.0 * score_all / course_and_score_map.size();
-}
 
 void StudentScore::set_course_map(std::string course, int score) {
     course_and_score_map[course] = score;
@@ -65,4 +57,12 @@ void StudentScore::set_course_map(std::string course, int score) {
 
 void StudentScore::set_name(std::string name_) {
     name = name_;
+}
+
+void StudentScore::set_score_average() {
+    const int total = std::accumulate(course_and_score_map.begin(), course_and_score_map.end(), 0,
+                                      [](const int pre_result, const std::pair<std::string, int> &kv) {
+                                          return pre_result + kv.second;
+                                      });
+    score_average = 1.0 * total / course_and_score_map.size();
 }

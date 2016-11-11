@@ -22,6 +22,7 @@ public:
 
     void set_score_average(void);
 
+
 private:
     std::string name;
     double score_average;

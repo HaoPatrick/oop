@@ -36,7 +36,7 @@ int main() {
         }
     }
 
-    std::cout << "Name    Num     Scores ... Average \n" << std::endl;
+    std::cout << "Name     Scores ... Average \n" << std::endl;
     for (auto &student:total_students) {
         student.print_result();
         std::cout << "\n";
