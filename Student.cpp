@@ -42,10 +42,11 @@ vector<std::string> StudentScore::split(const std::string s_s, char delim) {
 
 void StudentScore::print_result(void) {
     std::string out_line(name);
-    out_line = out_line + " " + std::to_string(num) + " ";
+    out_line = out_line + " ";
     for (const auto &kv:course_and_score_map) {
-        out_line += kv.first + ":" + std::to_string(kv.second);
+        out_line += " " + kv.first + ":" + std::to_string(kv.second) + " ";
     }
+    out_line += std::to_string(score_average);
     std::cout << out_line << std::endl;
 }
 
@@ -60,4 +61,8 @@ void StudentScore::set_score_average(void) {
 
 void StudentScore::set_course_map(std::string course, int score) {
     course_and_score_map[course] = score;
+}
+
+void StudentScore::set_name(std::string name_) {
+    name = name_;
 }

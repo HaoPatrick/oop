@@ -10,20 +10,22 @@ int main() {
     vector<StudentScore> total_students;
     bool student_end_flag = false;
     while (!student_end_flag) {
-        StudentScore current;
+        StudentScore current_student;
         bool course_end_flag = false;
         std::string record;
 
         std::string this_name;
-        std::cout<<"Name please ?"<<std::endl;
+        std::cout << "Name please ?" << std::endl;
+        std::getline(std::cin, this_name);
+        current_student.set_name(this_name);
 
         while (!course_end_flag) {
             std::cout << "Course Score (use -1 to end this student):" << std::endl;
             std::getline(std::cin, record);
-            course_end_flag = current.set_info_from_record(record);
+            course_end_flag = current_student.set_info_from_record(record);
         }
-        current.set_score_average();
-        total_students.push_back(current);
+        current_student.set_score_average();
+        total_students.push_back(current_student);
 
         std::cout << "Do you want to add more student?(Y/n)" << std::endl;
         std::string if_add_more_student;
@@ -33,12 +35,11 @@ int main() {
             student_end_flag = true;
         }
     }
+
+    std::cout << "Name    Num     Scores ... Average \n" << std::endl;
     for (auto &student:total_students) {
         student.print_result();
         std::cout << "\n";
     }
-//    for (auto it = total_students.begin(); it != total_students.end(); ++it) {
-//        (*it).print_result();
-//    }
     return 0;
 }

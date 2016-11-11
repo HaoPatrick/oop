@@ -14,14 +14,6 @@ class StudentScore {
 public:
     bool set_info_from_record(std::string record_info);
 
-    void set_score_one(int score);
-
-    void set_score_two(int score);
-
-    void set_score_three(int score);
-
-    void set_num(int num);
-
     void set_name(std::string name_);
 
     void print_result(void);
@@ -31,11 +23,7 @@ public:
     void set_score_average(void);
 
 private:
-    int num;
     std::string name;
-    int score_one;
-    int score_two;
-    int score_three;
     double score_average;
 
 
