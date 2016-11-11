@@ -1,7 +1,7 @@
 ## Input example:
 
 
-** course ** ** score **
+**course** **score**
 
 
 Please attention: only one space is allowed between the course name and the score.
