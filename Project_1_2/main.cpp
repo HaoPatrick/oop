@@ -8,7 +8,7 @@ using std::vector;
 
 int main() {
     vector<StudentScore> total_students;
-    bool student_end_flag = false;
+    bool student_end_flag  = false;
     while (!student_end_flag) {
         StudentScore current_student;
         bool course_end_flag = false;
