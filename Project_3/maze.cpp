@@ -22,7 +22,6 @@ void Maze::generate_a_random_maze(int *maze) {
     std::uniform_int_distribution<std::mt19937::result_type> dist(1, 8);
     for (int i = 0; i < 9; i++) {
         maze[i] = 0;
-        std::cout << dist(gen) << " ";
     }
     std::cout << std::endl;
     maze[dist(gen)] = 1;
