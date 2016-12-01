@@ -1,10 +1,10 @@
 //
 // Created by Haoxiangpeng on 11/25/2016.
 //
+#pragma once
+
 #include <iostream>
 
-#ifndef PROJECT_3_ROOM_H
-#define PROJECT_3_ROOM_H
 
 class Room {
 public:
@@ -15,15 +15,15 @@ public:
 
     Room();
 
-    inline auto can_go_up() -> bool { return up; };
+    virtual inline auto can_go_up() -> bool final { return up; };
 
-    inline auto can_go_down() -> bool { return down; };
+    virtual inline auto can_go_down() -> bool final { return down; };
 
-    inline auto can_go_left() -> bool { return left; };
+    virtual inline auto can_go_left() -> bool final { return left; };
 
-    inline auto can_go_right() -> bool { return right; };
+    virtual inline auto can_go_right() -> bool final { return right; };
 
-    inline auto get_current_location() -> std::string {
+    virtual inline auto get_current_location() -> std::string final {
         std::string location_string = "(";
         location_string += std::to_string(location / 3);
         location_string += ",";
@@ -33,7 +33,6 @@ public:
     };
 
 protected:
-    std::string room_message;
     bool up;
     bool down;
     bool right;
@@ -50,7 +49,7 @@ public:
 
     using Room::Room;
 
-    auto room_action() -> int { return this->room_type; };
+    auto room_action() -> int override { return this->room_type; };
 
 
 protected:
@@ -59,47 +58,26 @@ protected:
 
 class MonsterRoom : public Room {
 public:
-    inline MonsterRoom() {
-        std::cout << room_message << std::endl;
-    }
-
     using Room::Room;
 
-    auto room_action() -> int { return this->room_type; };
+    auto room_action() -> int override { return this->room_type; };
 
-
-protected:
-    const std::string room_message = "You encountered a monster!";
 };
 
 class CommonRoom : public Room {
 public:
-    inline CommonRoom() {
-        std::cout << room_message << std::endl;
-    }
-
     using Room::Room;
 
-    auto room_action() -> int { return this->room_type; };
-
-
-protected:
-    const std::string room_message = "A new room, nothing special!";
+    auto room_action() -> int override { return this->room_type; };
 };
 
 class Lobby : public Room {
 public:
-    inline Lobby() {
-        std::cout << room_message << std::endl;
-    }
 
-    auto room_action() -> int { return this->room_type; };
+    auto room_action() -> int override { return this->room_type; };
 
     using Room::Room;
 
-protected:
-    const std::string room_message = "You encountered a monster!";
 };
 
-
-#endif //PROJECT_3_ROOM_H
+//PROJECT_3_ROOM_H
