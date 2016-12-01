@@ -8,9 +8,10 @@
 
 class Room {
 public:
-    virtual auto action()->int;
 
-    Room(int i);
+    virtual auto room_action() -> int { return this->room_type; };
+
+    Room(int i, int type);
 
     Room();
 
@@ -38,6 +39,7 @@ protected:
     bool right;
     bool left;
     int location;
+    int room_type = 0;
 };
 
 class PrinceRoom : public Room {
@@ -48,7 +50,8 @@ public:
 
     using Room::Room;
 
-    bool action();
+    auto room_action() -> int { return this->room_type; };
+
 
 protected:
     const std::string room_message = "Congratulations to the Prince Room!";
@@ -62,11 +65,11 @@ public:
 
     using Room::Room;
 
-    bool action();
+    auto room_action() -> int { return this->room_type; };
+
 
 protected:
     const std::string room_message = "You encountered a monster!";
-
 };
 
 class CommonRoom : public Room {
@@ -77,11 +80,11 @@ public:
 
     using Room::Room;
 
-    bool action();
+    auto room_action() -> int { return this->room_type; };
+
 
 protected:
     const std::string room_message = "A new room, nothing special!";
-
 };
 
 class Lobby : public Room {
@@ -90,13 +93,12 @@ public:
         std::cout << room_message << std::endl;
     }
 
-    bool action();
+    auto room_action() -> int { return this->room_type; };
 
     using Room::Room;
 
 protected:
     const std::string room_message = "You encountered a monster!";
-
 };
 
 

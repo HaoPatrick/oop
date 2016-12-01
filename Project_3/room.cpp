@@ -4,9 +4,7 @@
 
 #include "room.h"
 
-bool Room::action() {
-    return false;
-}
+
 
 Room::Room() {
     this->down = 0;
@@ -15,26 +13,12 @@ Room::Room() {
     this->up = 0;
 }
 
-Room::Room(int i) {
+Room::Room(int i,int type) {
     this->left = i % 3 > 0;
     this->right = i % 3 < 2;
     this->up = i / 3 > 0;
     this->down = i / 3 < 2;
-    this->location=i;
+    this->location = i;
+    this->room_type=type;
 }
 
-bool PrinceRoom::action() {
-    return 1;
-}
-
-bool MonsterRoom::action() {
-    return 2;
-}
-
-bool CommonRoom::action() {
-    return 3;
-}
-
-bool Lobby::action() {
-    return 3;
-}
