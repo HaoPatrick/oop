@@ -53,7 +53,7 @@ int main() {
         if (current_room.can_go_down()) promote_message += " down";
         if (current_room.can_go_left()) promote_message += " left";
         if (current_room.can_go_right()) promote_message += " right";
-        promote_message += "?\n";
+        promote_message += "? Use help to print the map.\n";
         std::cout << promote_message << std::endl;
         std::string user_input;
         vector<int> directions;
@@ -70,8 +70,11 @@ int main() {
                 current_location += maze.direction_map.at(user_input);
             } else if (user_input == "left" && current_room.can_go_left()) {
                 current_location += maze.direction_map.at(user_input);
+            }else if(user_input=="help"){
+                maze.print_the_map();
             }
         }
+
     }
     return 0;
 }
