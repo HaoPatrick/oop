@@ -1,11 +1,12 @@
-## Input example:  **course**  **score**
+OOP Homework here
+===
 
+I push all the homework of this course to github now.
 
-Please attention: only **one space** is allowed between the course name and the score.
+We are tought to understand the concept of object oriented programming using C++
 
+I tried hard to use the latest features of C++, which refers to C++ 11, sometimes C++ 14&17.
 
-Use C++ 11 only, some of the features are only tested and implemented in C++ 11.
+Since C++ is too hard to master in such a short life, any issues and pull requests are welcomed.
 
-Less for loop, but for-each or lambda or functional programming.
-
-Github Repo: git@github.com:HaoPatrick/oop.git
+Github Repo: https://github.com/HaoPatrick/oop
