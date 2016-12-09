@@ -1,6 +1,6 @@
 #include <iostream>
 #include "json.hpp"
-
+#include <fstream>
 using json = nlohmann::json;
 
 int main() {
@@ -13,9 +13,14 @@ int main() {
     j["list"] = {1, 2, 3, 4};
     j["answer"]["awe"] = 42;
     j["count"]=1;
-    j[1]["date"]="aaa";
-    j[1]["content"]="asldkfjlasjdf";
+    j["1"]["date"]="aaa";
+    j["1"]["content"]="asldkfjlasjdf";
     std::string sample = j.dump();
     std::cout << sample << std::endl;
+
+    std::ofstream outfile;
+    outfile.open("dairy.dat");
+    outfile<<sample<<std::endl;
+    outfile.close();
     return 0;
 }
