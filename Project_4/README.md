@@ -29,7 +29,7 @@ Main Features
 
 1. Only compiles using `g++ 4.9` or later and probably before `g++ 6.x`
 
-2. Using `json` to serialize the dairy content thus use the [`json`](https://github.com/nlohmann/json) library
+2. Using `json` to serialize the dairy content, thus use this [`json`](https://github.com/nlohmann/json) library
 
 3. Designed primarily conformed to the Unix-like style.
 
