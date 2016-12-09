@@ -1,4 +1,5 @@
 #pragma once
+
 #include "json.hpp"
 
 
@@ -9,11 +10,15 @@ public:
 
     Dairy();
 
-    int add_a_new_item(std::string date, std::string content);
+    int add_a_new_item(int date, std::string content);
 
     int save();
 
-    std::string list_all_item() ;
+    int delete_item(int date);
+
+    std::string list_item(int);
+
+    std::string list_item(int start, int end);
 
 protected:
 

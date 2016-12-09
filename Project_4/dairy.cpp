@@ -20,7 +20,7 @@ Dairy::Dairy() {
     infile.close();
 }
 
-int Dairy::add_a_new_item(std::string date, std::string content) {
+int Dairy::add_a_new_item(int date, std::string content) {
     bool found_flag = false;
     for (int i = 1; i <= this->count(); i++) {
 //        std::cout<<dairy_data[std::to_string(i)]["date"]<<" | "<<date<<" | "<<(dairy_data[std::to_string(i)]["date"]==date)<<std::endl;
@@ -41,19 +41,60 @@ int Dairy::add_a_new_item(std::string date, std::string content) {
 int Dairy::save() {
     std::ofstream outfile("dairy.dat");
 //    outfile.open("dairy.dat");
-    outfile << this->dairy_data<< std::endl;
+    outfile << this->dairy_data << std::endl;
     outfile.close();
     return 1;
 }
 
-std::string Dairy::list_all_item() {
-    std::string result("");
-    for (int i = 0; i < this->dairy_count; i++) {
-        result.append("Date");
-        result.append(this->dairy_data[i]["date"]);
-        result.append("\nContent:");
-        result.append(this->dairy_data[i]["content"]);
-        result.append("\n");
+std::string Dairy::list_item(int date) {
+    std::string result("==========================\n");
+    for (int i = 1; i <= this->dairy_count; i++) {
+        if (this->dairy_data[std::to_string(i)]["date"] != date)
+            continue;
+
+        result.append("Date: ");
+        int temp_value = this->dairy_data[std::to_string(i)]["date"];
+        result.append(std::to_string(temp_value));
+        result.append("\nContent: ");
+        result.append(this->dairy_data[std::to_string(i)]["content"]);
+        result.append("\n==========================\n");
     }
     return result;
+}
+
+std::string Dairy::list_item(int start, int end) {
+    std::string result("==========================\n");
+    for (int i = 1; i <= this->dairy_count; i++) {
+
+        if (this->dairy_data[std::to_string(i)]["date"] != "-1" &&
+            this->dairy_data[std::to_string(i)]["date"] >= start &&
+            this->dairy_data[std::to_string(i)]["date"] <= end
+                ) {
+            int temp_value = this->dairy_data[std::to_string(i)]["date"];
+            result.append("Date: ");
+            result.append(std::to_string(temp_value));
+            result.append("\nContent: ");
+            result.append(this->dairy_data[std::to_string(i)]["content"]);
+            result.append("\n==========================\n");
+            std::cout << "asd" << std::endl;
+        }
+    }
+    return result;
+}
+
+int Dairy::delete_item(int date) {
+    bool found_flag = false;
+    for (int i = 1; i <= this->count(); i++) {
+        if (this->dairy_data[std::to_string(i)]["date"] == date) {
+//            std::cout << dairy_data[std::to_string(i)]["date"] << " | " << date << " | "
+//                      << (dairy_data[std::to_string(i)]["date"] == date) << std::endl;
+            this->dairy_data[std::to_string(i)]["date"] = -1;
+            this->dairy_data[std::to_string(i)]["content"] = "-1";
+            found_flag = true;
+            this->save();
+            break;
+        }
+    }
+    if (found_flag) return 0;
+    else return 1;
 }
