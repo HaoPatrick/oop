@@ -76,7 +76,6 @@ std::string Dairy::list_item(int start, int end) {
             result.append("\nContent: ");
             result.append(this->dairy_data[std::to_string(i)]["content"]);
             result.append("\n==========================\n");
-            std::cout << "asd" << std::endl;
         }
     }
     return result;
