@@ -5,10 +5,10 @@
 #pragma once
 
 #include <exception>
-
-class IndexOutofBounds : std::exception {
+#include <string>
+class IndexOutofBounds : public std::exception {
     const char *what() const throw() {
-        return "Index out of Bounds";
+        return "Index out of bounds";
     }
 };
 
@@ -20,12 +20,14 @@ public:
     Vector(const Vector &r);    // copy ctor
     virtual ~Vector();
 
-    T &operator[](int index) : throw (IndexOutofBounds);
+    T &operator[](int index);
 
     // return the specified element, throws exception when index <0 or >=m_nSize
-    int size();        // return the size of the vector
+    int  size()const;        // return the size of the vector
     int inflate(int addSize);    // expand the storage to m_nSize+addSize, return the new size
-private:
+
+
+public:
     T *m_pElements;
     int m_nSize;
 };
