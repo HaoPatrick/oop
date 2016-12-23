@@ -6,6 +6,7 @@
 
 #include <exception>
 #include <string>
+
 class IndexOutofBounds : public std::exception {
     const char *what() const throw() {
         return "Index out of bounds";
@@ -23,11 +24,12 @@ public:
     T &operator[](int index);
 
     // return the specified element, throws exception when index <0 or >=m_nSize
-    int  size()const;        // return the size of the vector
+    int size() const;        // return the size of the vector
     int inflate(int addSize);    // expand the storage to m_nSize+addSize, return the new size
 
+    void set_value(T, int);
 
-public:
+private:
     T *m_pElements;
     int m_nSize;
 };
